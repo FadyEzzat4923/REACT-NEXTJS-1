@@ -37,7 +37,8 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: false, // told nextJS if that paths all or just some of them
+    fallback: "blocking", // told nextJS if that paths all or just some of them
+    // fallback => "blocking" or true mean these are not the all pages I want generate only.
     paths: meetups.map((meetup) => ({
       params: { meetupid: meetup._id.toString() },
     })),
